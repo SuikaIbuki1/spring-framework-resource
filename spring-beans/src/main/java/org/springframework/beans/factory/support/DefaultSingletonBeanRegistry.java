@@ -81,6 +81,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	final Lock singletonLock = new ReentrantLock();
 
 	/** Cache of singleton objects: bean name to bean instance. */
+	// huang：单例对象池，缓存所有单实例对象
 	private final Map<String, Object> singletonObjects = new ConcurrentHashMap<>(256);
 
 	/** Creation-time registry of singleton factories: bean name to ObjectFactory. */

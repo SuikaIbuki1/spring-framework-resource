@@ -82,6 +82,7 @@ class ApplicationContextAwareProcessor implements BeanPostProcessor {
 	@Override
 	public @Nullable Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 		if (bean instanceof Aware) {
+			// huang：执行 aware 接口规定的方法
 			invokeAwareInterfaces(bean);
 		}
 		return bean;

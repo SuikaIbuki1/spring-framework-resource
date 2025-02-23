@@ -586,7 +586,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			prepareRefresh();
 
 			// Tell the subclass to refresh the internal bean factory.
-			// huang：beanFactory 第一次创建
+			// huang：beanFactory 第一次创建，有 xml 解析逻辑
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// Prepare the bean factory for use in this context.
@@ -616,6 +616,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				registerListeners();
 
 				// Instantiate all remaining (non-lazy-init) singletons.
+				// huang：完成 beanFactory 的初始化，包括实例化单例，初始化单例，注册单例，注册单例的拦截器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
@@ -976,6 +977,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		beanFactory.freezeConfiguration();
 
 		// Instantiate all remaining (non-lazy-init) singletons.
+		// huang：初始化所有的单例 Bean
 		beanFactory.preInstantiateSingletons();
 	}
 
