@@ -8,4 +8,6 @@
 	<bean id="person" class="com.huang.spring.besn.Person">
 		<property name="name" value="zhangsan"/>
 	</bean>
+
+	<bean class="com.huang.spring.besn.HelloFactory" id="hello"></bean>
 </beans>

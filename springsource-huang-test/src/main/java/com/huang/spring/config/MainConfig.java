@@ -7,9 +7,11 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan("com.huang.spring")
 public class MainConfig implements ApplicationContextAware, MessageSourceAware {
 
 	private ApplicationContext applicationContext;

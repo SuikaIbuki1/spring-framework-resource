@@ -31,6 +31,7 @@ package org.springframework.beans.factory;
  * @see org.springframework.beans.factory.config.BeanDefinition#getPropertyValues()
  * @see org.springframework.beans.factory.support.AbstractBeanDefinition#getInitMethodName()
  */
+// huang：bean 组件初始化后进行后续设置，用于额外处理
 public interface InitializingBean {
 
 	/**

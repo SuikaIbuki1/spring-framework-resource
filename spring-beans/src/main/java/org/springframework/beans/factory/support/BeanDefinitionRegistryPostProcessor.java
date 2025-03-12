@@ -31,6 +31,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
  * @since 3.0.1
  * @see org.springframework.context.annotation.ConfigurationClassPostProcessor
  */
+// huang：bean 定义注册中的后置增强处理器
 public interface BeanDefinitionRegistryPostProcessor extends BeanFactoryPostProcessor {
 
 	/**

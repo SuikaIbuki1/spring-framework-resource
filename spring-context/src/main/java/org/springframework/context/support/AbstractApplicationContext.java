@@ -598,6 +598,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 				StartupStep beanPostProcess = this.applicationStartup.start("spring.context.beans.post-process");
 				// Invoke factory processors registered as beans in the context.
+				// huang：执行所有的 beanfactory 的后置增强器，可以对工厂进行修改或增强
 				invokeBeanFactoryPostProcessors(beanFactory);
 				// Register bean processors that intercept bean creation.
 				registerBeanPostProcessors(beanFactory);
@@ -616,7 +617,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				registerListeners();
 
 				// Instantiate all remaining (non-lazy-init) singletons.
-				// huang：完成 beanFactory 的初始化，包括实例化单例，初始化单例，注册单例，注册单例的拦截器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例的监听器，注册单例
+				// huang：bean 创建，完成 beanFactory 的初始化，包括实例化单例，初始化单例，注册单例，注册单例的拦截器，注册单例的监听器，
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
@@ -977,7 +978,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		beanFactory.freezeConfiguration();
 
 		// Instantiate all remaining (non-lazy-init) singletons.
-		// huang：初始化所有的单例 Bean
+		// huang：初始化所有所有非懒加载的单例 Bean
 		beanFactory.preInstantiateSingletons();
 	}
 

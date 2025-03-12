@@ -349,6 +349,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		}
 		BeanWrapper bw = new BeanWrapperImpl(existingBean);
 		initBeanWrapper(bw);
+		// huang：创建完成的对象进行赋值
 		populateBean(beanName, bd, bw);
 		return initializeBean(beanName, existingBean, bd);
 	}
@@ -419,6 +420,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
 		Object result = existingBean;
 		for (BeanPostProcessor processor : getBeanPostProcessors()) {
+			// huang：执行后置处理器 BeforeInitialization 方法
 			Object current = processor.postProcessBeforeInitialization(result, beanName);
 			if (current == null) {
 				return result;
@@ -558,6 +560,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 			instanceWrapper = this.factoryBeanInstanceCache.remove(beanName);
 		}
 		if (instanceWrapper == null) {
+			// huang：创建 bean 实例，默认使用无参构造器
 			instanceWrapper = createBeanInstance(beanName, mbd, args);
 		}
 		Object bean = instanceWrapper.getWrappedInstance();
@@ -595,6 +598,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		// Initialize the bean instance.
 		Object exposedObject = bean;
 		try {
+			// huang：创建好的对象属性赋值
 			populateBean(beanName, mbd, instanceWrapper);
 			exposedObject = initializeBean(beanName, exposedObject, mbd);
 		}
@@ -1729,6 +1733,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
 		// Set our (possibly massaged) deep copy.
 		try {
+			// huang：使用深拷贝设置对象属性值
 			bw.setPropertyValues(new MutablePropertyValues(deepCopy));
 		}
 		catch (BeansException ex) {

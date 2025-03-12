@@ -59,6 +59,7 @@ import org.springframework.beans.BeansException;
  * @see BeanPostProcessor
  * @see PropertyResourceConfigurer
  */
+// huang：对 beanfactory 进行后置增强
 @FunctionalInterface
 public interface BeanFactoryPostProcessor {
 

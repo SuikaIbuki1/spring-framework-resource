@@ -1133,6 +1133,8 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 	}
 
 	private void instantiateSingleton(String beanName) {
+		// huang：如果 beanName 是 FactoryBean 的话，则获取 beanName 对应的 bean，如果 beanName 对应的 bean 是 SmartFactoryBean，
+		// 并且 SmartFactoryBean 的 isEagerInit() 方法返回 true，则获取 beanName 对应的 bean
 		if (isFactoryBean(beanName)) {
 			Object bean = getBean(FACTORY_BEAN_PREFIX + beanName);
 			if (bean instanceof SmartFactoryBean<?> smartFactoryBean && smartFactoryBean.isEagerInit()) {
